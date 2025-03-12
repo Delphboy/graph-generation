@@ -1,0 +1,22 @@
+#!/bin/bash
+
+tmux rename-window "nvim"
+tmux send-keys "source .venv/bin/activate" 
+tmux send-keys "nvim ." 
+
+
+tmux neww -n "runner"
+tmux send-keys "source .venv/bin/activate" 
+tmux send-keys "clear && bash run.sh"
+tmux split-window -h
+tmux send-keys "watch nvidia-smi" 
+tmux split-window -v
+tmux send-keys "htop" 
+
+tmux neww -n "lazygit"
+tmux send-keys "lazygit" 
+
+tmux neww -n "zsh"
+
+
+tmux select-window -t "nvim"
