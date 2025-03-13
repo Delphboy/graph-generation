@@ -22,7 +22,7 @@ class Generator():
                        encoding='latin1').item()
 
     def _get_spatial_edges(self, idx):
-        return torch.from_numpy(self._get_spatial_graph_data(idx)["edges"]).type(torch.float32).t().contiguous()
+        return torch.from_numpy(self._get_spatial_graph_data(idx)["edges"]).type(torch.long).t().contiguous()
 
     def _get_spatial_relationships(self, idx):
         return torch.from_numpy(self._get_spatial_graph_data(idx)["feats"]).type(torch.float32)
