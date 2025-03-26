@@ -9,11 +9,18 @@ class Generator():
         self.butd = args.butd
         self.vsua = args.vsua
         self.sgae = args.sgae
+        self.bbox = args.bbox if args.bbox != "NOT PROVIDED" else None
         self.output_dir = args.output_dir
 
     def _get_objects(self, idx:int ):
         return torch.from_numpy(
             np.load(os.path.join(self.butd, str(idx)+".npz"))['feat']
+        )
+
+    def _get_bboxes(self, idx:int ):
+        assert self.bbox is not None, "MISSING FLAG: Please ensure that the --bbox flag is set"
+        return torch.from_numpy(
+            np.load(os.path.join(self.bbox, str(idx)+".npy"))
         )
 
     def _get_spatial_graph_data(self, idx):
