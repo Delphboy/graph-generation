@@ -9,7 +9,7 @@ class Geometric(generator.Generator):
     def build_graph(self, idx: int):
         data = HeteroData()
         data["object"].x = self._get_objects(idx)
-        data["object", "geometric_relationships", "object"].edge_index = self._get_spatial_edges(idx)
-        data["object", "geometric_relationships", "object"].edge_attr = self._get_spatial_relationships(idx)
+        data["object", "geometric_relationships", "object"].edge_index = self._get_geometric_edges(idx)
+        data["object", "geometric_relationships", "object"].edge_attr = self._get_geometric_relationships(idx)
         return data
 

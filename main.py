@@ -5,9 +5,11 @@ import generators
 
 _GRAPH_TYPES = {
     "semantic": generators.Semantic, 
-    "spatial": generators.Sptial,
+    "semanticvsua": generators.SemanticVsua, 
+    "spatial": generators.Spatial,
     "geometric": generators.Geometric,
     "heteroyao": generators.HeteroYao,
+    "heterovsua": generators.HeteroVsua,
 }
 
 

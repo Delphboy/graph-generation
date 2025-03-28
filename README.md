@@ -24,8 +24,11 @@ Below is a list of the graph types supported by this project. Please see Section
 
 The project currently supports the following graph types:
 - **semantic**: Follows the [GCN-LSTM](https://arxiv.org/abs/1809.07041) definition of a semantic graph i.e. objects connected via edges with one-hot-encoded edge labels describing the semantic relationship between the two objects.
+- **spatial**: Follows the [GCN-LSTM](https://arxiv.org/abs/1809.07041) definition of a spatial graph i.e. objects connected via edges with one-hot-encoded edge labels describing the spatial relationship between the two objects as defined as one of 11 classes in the paper.
+- **semanticvsua**: Follows the [VSUA](https://arxiv.org/abs/1908.02127) semantic graph i.e. objects connected via edges with a one-hot encoded feature describing the semantic relationship between the two objects. Each object also has an additional three one-hot encoded attribute nodes attached to it
 - **geometric**: Follows the [VSUA](https://arxiv.org/abs/1908.02127) 'geometric' graph i.e. objects connected via edges with an $\mathbb{R}^8$ feature describing the spatial relationship between the two objects.
-- **heteroyao**: A heterogeneous graph that combines both the semantic and geometric/spatial edges, essentially merging the two graph types used by the [GCN-LSTM](https://arxiv.org/abs/1809.07041) paper by Yao el al. Note that this graph does not use any attribute features. 
+- **heteroyao**: A heterogeneous graph that combines both the semantic and spatial edges, essentially merging the two graph types used by the [GCN-LSTM](https://arxiv.org/abs/1809.07041) paper by Yao el al. Note that this graph does not use any attribute features. 
+- **heterovsua**: Follows the [VSUA](https://arxiv.org/abs/1908.02127) and combines both the semanticvsua and geometric graphs
 
 
 ### Adding New Graphs

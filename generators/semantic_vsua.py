@@ -1,23 +1,24 @@
+import torch
 from torch_geometric.data import HeteroData
 
 from generators import generator
 
-class HeteroYao(generator.Generator):
+class SemanticVsua(generator.Generator):
     def __init__(self, args) -> None:
         super().__init__(args)
 
     def build_graph(self, idx: int):
         data = HeteroData()
-
         data["object"].x = self._get_objects(idx)
+        num_objects = data["object"].x.shape[0]
 
         data["object", "semantic_relationships", "object"].edge_index = self._get_semantic_edges(idx)
         data["object", "semantic_relationships", "object"].edge_attr = self._get_semantic_relationships(idx)
+        attributes = self._get_attribute_nodes(idx)[:,:3].reshape(-1)
+        data["attribute"].x = attributes
 
-        bbox_data = self._get_bboxes(idx)
-        edge_index, edge_attr = self._generate_spatial_edges_and_features(bbox_data)
-        data["object", "spatial_relationships", "object"].edge_index = edge_index
-        data["object", "spatial_relationships", "object"].edge_attr = edge_attr
+        attribute_edges = torch.tensor([[i % num_objects, i] for i in range(3*num_objects)]).T
+        data["object", "has_attribute", "attribute"].edge_index = attribute_edges
 
         return data
 
