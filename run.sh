@@ -2,7 +2,7 @@
 
 source .venv/bin/activate
 
-graph="spatial"
+graph="semanticvsua"
 # output_dir="outputs/${graph}"
 output_dir="/home/henry/Datasets/coco/heterographs/${graph}"
 

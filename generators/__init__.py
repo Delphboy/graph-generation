@@ -4,3 +4,4 @@ from generators.semantic_vsua import SemanticVsua
 from generators.geometric import Geometric
 from generators.heteroyao import HeteroYao
 from generators.heterovsua import HeteroVsua
+from generators.tsg import Tsg

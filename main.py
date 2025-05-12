@@ -10,6 +10,7 @@ _GRAPH_TYPES = {
     "geometric": generators.Geometric,
     "heteroyao": generators.HeteroYao,
     "heterovsua": generators.HeteroVsua,
+    "tsg": generators.Tsg,
 }
 
 

@@ -109,12 +109,17 @@ class Generator():
     def build_graph_wrapper(self, args):
         idx, output_dir, _ = args
         print(f"Processing: {idx}")
-        graph = self.build_graph(idx)
-        torch.save(graph, os.path.join(output_dir, idx)+".pt")
+        try:
+            graph = self.build_graph(idx)
+            torch.save(graph, os.path.join(output_dir, idx)+".pt")
+        except Exception as e:
+            print(f"EXCEPTION OCCURED WHILST PROCESSING GRAPH={idx}")
+            raise e
 
     def build_graphs(self):
         file_names = os.listdir(self.butd)
         idxs = [file_name.split('.')[0] for file_name in file_names]
+        # print(idxs)
 
         with multiprocessing.Pool(5) as pool:
             args = [(idx, self.output_dir, self.butd) for idx in idxs]
