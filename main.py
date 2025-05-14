@@ -11,6 +11,7 @@ _GRAPH_TYPES = {
     "heteroyao": generators.HeteroYao,
     "heterovsua": generators.HeteroVsua,
     "tsg": generators.Tsg,
+    "attention": generators.Attention,
 }
 
 
