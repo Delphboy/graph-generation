@@ -12,6 +12,7 @@ _GRAPH_TYPES = {
     "heterovsua": generators.HeteroVsua,
     "tsg": generators.Tsg,
     "attention": generators.Attention,
+    "semanticvgcap": generators.SemanticVgCap,
 }
 
 
@@ -21,6 +22,7 @@ def check_args(args):
     assert os.path.isdir(args.butd) and len(os.listdir(args.butd)) > 0, f"BAD DIR: The BUTD path provided ({args.butd}) is either not a directory or is empty"
     assert os.path.isdir(args.vsua) and len(os.listdir(args.vsua)) > 0, f"BAD DIR: The VSUA path provided ({args.vsua}) is either not a directory or is empty"
     assert os.path.isdir(args.sgae) and len(os.listdir(args.sgae)) > 0, f"BAD DIR: The SGAE path provided ({args.sgae}) is either not a directory or is empty"
+    assert os.path.isdir(args.vgcap) and len(os.listdir(args.vgcap)) > 0, f"BAD DIR: The VgCap path provided ({args.vgcap}) is either not a directory or is empty"
 
     assert graph_type in _GRAPH_TYPES.keys(), f"BAD GRAPH: Received unsupported graph type of {args.graph_type}. Supported types are:\n\t{_GRAPH_TYPES.keys()}"
 
@@ -34,6 +36,7 @@ if __name__ == "__main__":
     args.add_argument("--butd", required=True, help="The directory of the bottom up top down object detection features")
     args.add_argument("--vsua", required=True, help="The directory of the data provided by the VSUA paper")
     args.add_argument("--sgae", required=True, help="The directory of the data provided by the SGAE paper")
+    args.add_argument("--vgcap", required=True, help="The directory of the data provided by the vgcap paper")
     args.add_argument("--output_dir", required=True, help="The directory where the produced graphs will be stored once generated")
     args.add_argument("--graph_type", required=True, help=f"The graph type you wish to generate, supported graphs are: {_GRAPH_TYPES.keys()}")
     args.add_argument("--bbox", required=False, default="NOT PROVIDED", help="The directory of the bottom up top down bounding box features")

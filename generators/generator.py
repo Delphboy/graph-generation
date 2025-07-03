@@ -11,6 +11,7 @@ class Generator():
         self.butd = args.butd
         self.vsua = args.vsua
         self.sgae = args.sgae
+        self.vgcap = args.vgcap
         self.bbox = args.bbox if args.bbox != "NOT PROVIDED" else None
         self.output_dir = args.output_dir
 
@@ -102,6 +103,15 @@ class Generator():
         edge_index, edge_attr = dense_to_sparse(adjacency_matrix)
         edge_attr = edge_attr.to(torch.long)
         return edge_index, edge_attr
+    
+    def _get_vgcap_data(self, idx: int):
+        data = np.load(os.path.join(self.vgcap, str(idx) + ".npz"))
+        nodes = data["obj"]
+        edges = np.concatenate([data["prela"], data["wrela"]], axis=0)
+        # if the relation of an image is empty, then fill in it with <0, 0, 'near'> to avoid problems
+        if edges.shape[0] == 0:
+            edges = np.array([[0, 0, 119]], dtype=int) # 119 == near
+        return nodes, edges
 
     def build_graph(self, idx: int):
         raise NotImplementedError(f"The function `build_graph` was called with IDX={idx} but has not been implemented")

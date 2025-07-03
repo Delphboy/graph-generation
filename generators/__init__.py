@@ -6,3 +6,4 @@ from generators.heteroyao import HeteroYao
 from generators.heterovsua import HeteroVsua
 from generators.tsg import Tsg
 from generators.attention import Attention
+from generators.semantic_vgcap import SemanticVgCap
