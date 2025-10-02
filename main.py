@@ -13,6 +13,7 @@ _GRAPH_TYPES = {
     "tsg": generators.Tsg,
     "attention": generators.Attention,
     "semanticvgcap": generators.SemanticVgCap,
+    "topology": generators.Topology,
 }
 
 
